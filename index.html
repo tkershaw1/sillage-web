@@ -111,14 +111,14 @@
     .nav.scrolled { border-bottom-color: var(--border); }
 
     .nav-logo {
-      font-family: var(--font-d);
-      font-weight: 300;
-      font-size: 18px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--text-1);
+      display: flex;
+      align-items: center;
     }
-    .nav-logo .dot { color: var(--gold); margin: 0 1px; }
+    .nav-logo img {
+      height: 22px;
+      width: auto;
+      display: block;
+    }
 
     .nav-links {
       display: flex;
@@ -173,13 +173,9 @@
     }
 
     .hero-wordmark {
-      font-family: var(--font-d);
-      font-weight: 300;
-      font-size: clamp(76px, 13.5vw, 156px);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-1);
-      line-height: 1;
+      display: block;
+      width: min(680px, 88vw);
+      height: auto;
     }
 
     .hero-definition {
@@ -1252,13 +1248,12 @@
 
     .footer-brand { max-width: 260px; }
     .footer-logo {
-      font-family: var(--font-d);
-      font-weight: 300;
-      font-size: 22px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-1);
       margin-bottom: 16px;
+    }
+    .footer-logo img {
+      height: 26px;
+      width: auto;
+      display: block;
     }
     .footer-tagline {
       font-size: 14px;
@@ -1409,7 +1404,7 @@
 
   <!-- ─── NAV ────────────────────────────────────────────── -->
   <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
-    <a href="#" class="nav-logo" aria-label="Sillage home">S<span class="dot">·</span>illage</a>
+    <a href="/" class="nav-logo" aria-label="Sillage home"><img src="wordmark-ivory.svg" alt="Sillage"></a>
     <ul class="nav-links">
       <li class="hide-md"><a href="#features">Features</a></li>
       <li class="hide-md"><a href="#app">App</a></li>
@@ -1420,7 +1415,7 @@
   <!-- ─── HERO ────────────────────────────────────────────── -->
   <section class="hero" id="hero" aria-label="Hero">
     <p class="hero-eyebrow">For people who live by their nose</p>
-    <h1 class="hero-wordmark">Sillage</h1>
+    <img src="wordmark-ivory.svg" alt="Sillage" class="hero-wordmark">
     <p class="hero-definition">sil·lage /siˈyɑːʒ/ — the trail of scent left in passing</p>
     <div class="hero-rule" role="presentation"></div>
     <p class="hero-tagline">Your nose has stories. This is where you keep them.</p>
@@ -1889,7 +1884,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <div class="footer-logo">Sillage</div>
+          <div class="footer-logo"><img src="wordmark-gold.svg" alt="Sillage"></div>
           <p class="footer-tagline">The fragrance journal for people who take their nose seriously.</p>
         </div>
         <nav class="footer-nav" aria-label="Footer navigation">
