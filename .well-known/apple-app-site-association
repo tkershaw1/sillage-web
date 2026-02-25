@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["79EKA28D99.com.tkershaw.sillage"],
+        "components": [
+          { "/": "/sotd/*",        "comment": "SOTD detail pages" },
+          { "/": "/collection/*",  "comment": "Collection detail pages" },
+          { "/": "/fragrance/*",   "comment": "Fragrance detail pages" },
+          { "/": "/user/*",        "comment": "User profile pages" },
+          { "/": "/review/*",      "comment": "Review detail pages" }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["79EKA28D99.com.tkershaw.sillage"]
+  }
+}
