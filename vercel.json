@@ -16,6 +16,7 @@
     { "source": "/collection/:id", "destination": "/api/collection?id=:id" },
     { "source": "/sotd/:id",       "destination": "/api/sotd?id=:id" },
     { "source": "/fragrance/:id",  "destination": "/api/fragrance?id=:id" },
-    { "source": "/review/:id",     "destination": "/api/review?id=:id" }
+    { "source": "/review/:id",     "destination": "/api/review?id=:id" },
+    { "source": "/ranking/:id",    "destination": "/api/ranking?id=:id" }
   ]
 }
