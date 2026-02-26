@@ -1,0 +1,29 @@
+<!-- Sillage Favicon — optimized for small sizes (16x16 to 192x192) -->
+<!-- Simplified mark: bold teardrops + center dot for clarity at tiny sizes -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32">
+  <title>sillage</title>
+  <defs>
+    <!-- Simplified teardrop tendril (fatter, bolder — reads at 16px) -->
+    <!-- Slightly shorter and wider than the detail version -->
+    <path id="fav-td"
+      d="M 46.5,44
+         C 37,31 40,19 54,11
+         C 62,18 59,31 53.5,44
+         Z"/>
+  </defs>
+
+  <!-- Squircle background: tighter corner radius for small screen readability -->
+  <rect x="0" y="0" width="100" height="100" rx="20" ry="20" fill="#8B2C4A"/>
+
+  <!-- 6 bold tendrils -->
+  <g fill="#F5F0E8">
+    <use href="#fav-td" transform="rotate(0,50,50)"/>
+    <use href="#fav-td" transform="rotate(60,50,50)"/>
+    <use href="#fav-td" transform="rotate(120,50,50)"/>
+    <use href="#fav-td" transform="rotate(180,50,50)"/>
+    <use href="#fav-td" transform="rotate(240,50,50)"/>
+    <use href="#fav-td" transform="rotate(300,50,50)"/>
+    <!-- Center dot: slightly larger for small sizes -->
+    <circle cx="50" cy="50" r="6.5"/>
+  </g>
+</svg>
