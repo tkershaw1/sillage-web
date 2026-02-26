@@ -15,21 +15,85 @@ canvas = Image.new("RGBA", (W, H), (*BG_COLOR, 255))
 # ── Icon (icon-burgundy.png — real engraved tendril icon) ───────────────────
 ICON_SIZE = 380          # final rendered size on the canvas
 
-icon_src = Image.open("../sillage/assets/branding/icon-burgundy.png").convert("RGBA")
+def remove_white_bg(img: Image.Image, threshold: int = 20) -> Image.Image:
+    """Flood-fill from all four corners to make the white background transparent.
+
+    Only pixels connected (8-connected BFS) to the corners that are near-white
+    (all channels >= 255 - threshold) are made transparent. Interior light
+    pixels (e.g. engraved tendrils) are left untouched because they are not
+    reachable from the corners without passing through the burgundy icon body.
+    """
+    import numpy as np
+    from collections import deque
+
+    arr = img.convert("RGBA")
+    data = list(arr.getdata())  # flat list of (R,G,B,A) tuples
+    w, h = arr.size
+
+    lo = 255 - threshold  # minimum channel value to count as "near-white"
+
+    def is_near_white(idx):
+        r, g, b, a = data[idx]
+        return r >= lo and g >= lo and b >= lo
+
+    visited = bytearray(w * h)  # 0 = unvisited
+
+    queue = deque()
+
+    # Seed from all four corners (and their immediate neighbours to handle
+    # tiny sub-pixel anti-aliasing at the very edge)
+    seeds = []
+    for row in range(h):
+        seeds.append(row * w + 0)
+        seeds.append(row * w + (w - 1))
+    for col in range(w):
+        seeds.append(0 * w + col)
+        seeds.append((h - 1) * w + col)
+
+    for idx in seeds:
+        if not visited[idx] and is_near_white(idx):
+            visited[idx] = 1
+            queue.append(idx)
+
+    # 8-connected BFS
+    while queue:
+        idx = queue.popleft()
+        r_i = idx // w
+        c_i = idx % w
+        for dr in (-1, 0, 1):
+            for dc in (-1, 0, 1):
+                if dr == 0 and dc == 0:
+                    continue
+                nr, nc = r_i + dr, c_i + dc
+                if 0 <= nr < h and 0 <= nc < w:
+                    ni = nr * w + nc
+                    if not visited[ni] and is_near_white(ni):
+                        visited[ni] = 1
+                        queue.append(ni)
+
+    # Make all flood-filled pixels fully transparent
+    new_data = []
+    for idx, px in enumerate(data):
+        if visited[idx]:
+            new_data.append((px[0], px[1], px[2], 0))
+        else:
+            new_data.append(px)
+
+    result = Image.new("RGBA", (w, h))
+    result.putdata(new_data)
+    return result
+
+
+icon_src = Image.open("../sillage/assets/branding/icon-burgundy.png")
+icon_src = remove_white_bg(icon_src, threshold=20)
 icon_src = icon_src.resize((ICON_SIZE, ICON_SIZE), Image.LANCZOS)
 
-# favicon-512.png already has a clean squircle alpha — composite directly
 # Place icon centred vertically, left-aligned with generous margin
 icon_x = 90
 icon_y = (H - ICON_SIZE) // 2
 
-# Create a dark-backed tile the same size so anti-aliased edge pixels
-# composite against the correct dark colour (not white)
-icon_bg = Image.new("RGBA", (ICON_SIZE, ICON_SIZE), (*BG_COLOR, 255))
-icon_bg.alpha_composite(icon_src, (0, 0))
-
-# Now paste the pre-composited tile onto the canvas (no mask needed — fully opaque)
-canvas.paste(icon_bg.convert("RGB"), (icon_x, icon_y))
+# Composite icon (now with transparent background) directly onto the canvas
+canvas.alpha_composite(icon_src, (icon_x, icon_y))
 
 # ── Wordmark SVG → PNG ───────────────────────────────────────────────────────
 WORDMARK_H = 110          # rendered height (was ~70-ish previously)
