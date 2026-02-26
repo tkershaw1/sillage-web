@@ -12,10 +12,10 @@
     }
   ],
   "rewrites": [
-    { "source": "/sotd/:id",       "destination": "/" },
-    { "source": "/collection/:id", "destination": "/" },
-    { "source": "/fragrance/:id",  "destination": "/" },
-    { "source": "/user/:id",       "destination": "/" },
-    { "source": "/review/:id",     "destination": "/" }
+    { "source": "/user/:id",       "destination": "/api/user?id=:id" },
+    { "source": "/collection/:id", "destination": "/api/collection?id=:id" },
+    { "source": "/sotd/:id",       "destination": "/api/sotd?id=:id" },
+    { "source": "/fragrance/:id",  "destination": "/api/fragrance?id=:id" },
+    { "source": "/review/:id",     "destination": "/api/review?id=:id" }
   ]
 }
