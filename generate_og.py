@@ -12,10 +12,10 @@ BG_COLOR = (10, 9, 9)   # near-black
 
 canvas = Image.new("RGBA", (W, H), (*BG_COLOR, 255))
 
-# ── Icon (favicon-512.png) ───────────────────────────────────────────────────
+# ── Icon (icon-burgundy.png — real engraved tendril icon) ───────────────────
 ICON_SIZE = 380          # final rendered size on the canvas
 
-icon_src = Image.open("favicon-512.png").convert("RGBA")
+icon_src = Image.open("../sillage/assets/branding/icon-burgundy.png").convert("RGBA")
 icon_src = icon_src.resize((ICON_SIZE, ICON_SIZE), Image.LANCZOS)
 
 # favicon-512.png already has a clean squircle alpha — composite directly
