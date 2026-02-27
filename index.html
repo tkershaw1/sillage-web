@@ -2015,20 +2015,12 @@
       btn.disabled = true;
 
       try {
-        // ── TODO: Replace with your actual API call ─────────────
-        // Example: Resend / ConvertKit / Mailchimp / Supabase
-        //
-        // const res = await fetch('https://your-api.com/waitlist', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify({ email })
-        // });
-        //
-        // For quick MVP, use FormSubmit.co:
-        //   Set form action="https://formsubmit.co/your@email.com"
-        //   and remove this JS handler.
-
-        await new Promise(r => setTimeout(r, 600));
+        const res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        if (!res.ok) throw new Error('Request failed');
         input.value = '';
         showToast();
       } catch (err) {
