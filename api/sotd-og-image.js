@@ -27,7 +27,7 @@ function buildCard({ fragName, brand, displayName, username, dateLabel, photoBas
         children: [
           { type: 'img', props: { src: photoBase64, style: { position: 'absolute', left: 0, top: 0, width: '1200px', height: '630px', objectFit: 'cover' } } },
           { type: 'div', props: { style: { position: 'absolute', left: 0, bottom: 0, width: '1200px', height: '378px', background: 'linear-gradient(to bottom, transparent, #000)' } } },
-          logoSrc ? { type: 'img', props: { src: logoSrc, style: { position: 'absolute', top: '36px', left: '40px', width: '180px' } } } : null,
+          logoSrc ? { type: 'img', props: { src: logoSrc, style: { position: 'absolute', top: '36px', left: '40px', width: '270px' } } } : null,
           {
             type: 'div',
             props: {
@@ -38,8 +38,8 @@ function buildCard({ fragName, brand, displayName, username, dateLabel, photoBas
                   props: {
                     style: { display: 'flex', flexDirection: 'column' },
                     children: [
-                      { type: 'div', props: { style: { fontSize: '60px', fontFamily: 'Cormorant Garamond', fontWeight: 700, color: '#fff', lineHeight: 1.1 }, children: fragName } },
-                      brand ? { type: 'div', props: { style: { fontSize: '22px', color: '#bbb', marginTop: '6px' }, children: brand } } : null,
+                      { type: 'div', props: { style: { fontSize: '85px', fontFamily: 'Cormorant Garamond', fontWeight: 700, color: '#fff', lineHeight: 1.1 }, children: fragName } },
+                      brand ? { type: 'div', props: { style: { fontSize: '42px', color: '#bbb', marginTop: '6px' }, children: brand } } : null,
                     ].filter(Boolean),
                   },
                 },
@@ -48,8 +48,8 @@ function buildCard({ fragName, brand, displayName, username, dateLabel, photoBas
                   props: {
                     style: { display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' },
                     children: [
-                      { type: 'div', props: { style: { fontSize: '16px', color: '#ddd' }, children: byLine } },
-                      dateLabel ? { type: 'div', props: { style: { fontSize: '14px', color: '#aaa' }, children: dateLabel } } : null,
+                      { type: 'div', props: { style: { fontSize: '30px', color: '#ddd' }, children: byLine } },
+                      dateLabel ? { type: 'div', props: { style: { fontSize: '28px', color: '#aaa' }, children: dateLabel } } : null,
                     ].filter(Boolean),
                   },
                 },
@@ -66,17 +66,17 @@ function buildCard({ fragName, brand, displayName, username, dateLabel, photoBas
     props: {
       style: { width: '1200px', height: '630px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#141110', fontFamily: 'Inter' },
       children: [
-        logoSrc ? { type: 'img', props: { src: logoSrc, style: { width: '220px', marginBottom: '40px' } } } : null,
+        logoSrc ? { type: 'img', props: { src: logoSrc, style: { width: '270px', marginBottom: '40px' } } } : null,
         { type: 'div', props: { style: { width: '320px', height: '1px', background: '#8B2C4A', marginBottom: '36px' } } },
-        { type: 'div', props: { style: { fontSize: '64px', fontFamily: 'Cormorant Garamond', fontWeight: 700, color: '#fff', textAlign: 'center', lineHeight: 1.15, marginBottom: '12px', padding: '0 80px' }, children: fragName } },
-        brand ? { type: 'div', props: { style: { fontSize: '24px', color: '#999', marginBottom: '40px' }, children: brand } } : null,
+        { type: 'div', props: { style: { fontSize: '85px', fontFamily: 'Cormorant Garamond', fontWeight: 700, color: '#fff', textAlign: 'center', lineHeight: 1.15, marginBottom: '12px', padding: '0 80px' }, children: fragName } },
+        brand ? { type: 'div', props: { style: { fontSize: '42px', color: '#999', marginBottom: '40px' }, children: brand } } : null,
         {
           type: 'div',
           props: {
             style: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' },
             children: [
-              { type: 'div', props: { style: { fontSize: '16px', color: '#bbb' }, children: byLine } },
-              dateLabel ? { type: 'div', props: { style: { fontSize: '14px', color: '#666' }, children: dateLabel } } : null,
+              { type: 'div', props: { style: { fontSize: '30px', color: '#bbb' }, children: byLine } },
+              dateLabel ? { type: 'div', props: { style: { fontSize: '28px', color: '#666' }, children: dateLabel } } : null,
             ].filter(Boolean),
           },
         },
