@@ -62,7 +62,8 @@ module.exports = async function handler(req, res) {
     : `${displayName}'s Scent of the Day on Sillage.`;
 
   // Prefer the SOTD photo, fall back to fragrance image
-  const ogImage = sotd.photo_url || fragrance?.image_url || fragranceLayers[0]?.fragrance?.image_url || null;
+  // Use the Satori-rendered card as og:image for a consistent branded experience
+  const ogImage = `https://sillageapp.com/api/sotd-og-image?id=${encodeURIComponent(id)}`;
   const ogUrl = `https://sillageapp.com/sotd/${id}`;
   const deepLink = `sillage://sotd/${id}`;
 
